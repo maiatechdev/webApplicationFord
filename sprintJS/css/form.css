@@ -1,0 +1,115 @@
+.fordform {
+    display: block;
+    width: 320px;
+    border: 1.5px solid #cdd4e8;
+    border-radius: 6px;
+    height: 44px;
+    margin: 9px 0;
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+    padding: 0 14px;
+    color: #1a1a2e;
+    background: #f8fafd;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.fordform:focus {
+    outline: none;
+    border-color: #1351d8;
+    box-shadow: 0 0 0 3px rgba(19, 81, 216, 0.13);
+    background: #ffffff;
+}
+
+.fordform::placeholder {
+    color: #9ba8c2;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+}
+
+select.fordform {
+    width: 320px;
+    height: 44px;
+    color: #1a1a2e;
+    cursor: pointer;
+    appearance: auto;
+}
+
+/* Layout do formulário */
+
+.forms {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 48px;
+    background: #ffffff;
+    margin: 32px auto;
+    max-width: 880px;
+    border-radius: 12px;
+    padding: 48px 40px;
+    box-shadow: 0 4px 24px rgba(0, 52, 120, 0.09);
+}
+
+.forms > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    vertical-align: unset;
+}
+
+.forms > div img {
+    border-radius: 8px;
+    max-width: 340px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+h2.titulo {
+    font-weight: 900;
+    font-size: 22px;
+    color: #003478;
+    letter-spacing: 0.4px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+button[type="submit"] {
+    width: 320px;
+    height: 44px;
+    margin-top: 12px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    float: none;
+}
+
+/* Responsivo */
+
+@media (max-width: 768px) {
+    .forms {
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 20px;
+        margin: 16px;
+        gap: 28px;
+    }
+
+    .fordform,
+    select.fordform {
+        width: 80vw;
+        max-width: 340px;
+    }
+
+    button[type="submit"] {
+        width: 80vw;
+        max-width: 340px;
+    }
+}
