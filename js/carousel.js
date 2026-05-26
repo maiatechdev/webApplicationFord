@@ -19,7 +19,7 @@ class Carousel {
                 Carousel._sequence = 0;
                 Carousel._size = arr.length;
                 Carousel.Next();
-                Carousel._interval = setInterval(function () { Carousel.Next(); }, 2000);
+                Carousel._interval = setInterval(function () { Carousel.Next(); }, 5000);
             }
         } else {
             throw "Method Start need a Array Variable.";
@@ -51,13 +51,13 @@ class Carousel {
         clearInterval(Carousel._interval);
         Carousel._sequence = (Carousel._sequence - 2 + Carousel._size) % Carousel._size;
         Carousel.Next();
-        Carousel._interval = setInterval(function () { Carousel.Next(); }, 2000);
+        Carousel._interval = setInterval(function () { Carousel.Next(); }, 5000);
     }
 
 
     static GoNext() {
         clearInterval(Carousel._interval);
         Carousel.Next();
-        Carousel._interval = setInterval(function () { Carousel.Next(); }, 2000);
+        Carousel._interval = setInterval(function () { Carousel.Next(); }, 5000);
     }
 };
