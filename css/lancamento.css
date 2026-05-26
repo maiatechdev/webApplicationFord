@@ -1,0 +1,223 @@
+/* ── ANIMAÇÃO DE ENTRADA DOS CARDS ── */
+
+@keyframes cardFadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── CARDS DE MODELOS ── */
+
+ul.modelcars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px 24px;
+    margin-bottom: 0;
+}
+
+ul.modelcars li {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative; /* necessário para o pseudo-elemento overlay */
+    box-shadow: 0 2px 14px rgba(0, 52, 120, 0.09);
+    transition: box-shadow 0.28s ease, transform 0.28s ease;
+    text-align: left;
+    /* Animação escalonada por ordem */
+    animation: cardFadeUp 0.55s var(--ease, cubic-bezier(0.25, 0.46, 0.45, 0.94)) both;
+}
+
+ul.modelcars li:nth-child(1) { animation-delay: 0.08s; }
+ul.modelcars li:nth-child(2) { animation-delay: 0.20s; }
+ul.modelcars li:nth-child(3) { animation-delay: 0.32s; }
+
+ul.modelcars li:hover {
+    box-shadow: 0 10px 32px rgba(0, 52, 120, 0.20);
+    transform: translateY(-6px);
+}
+
+/* Overlay gradiente no rodapé da imagem, aparece no hover */
+ul.modelcars li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 175px;
+    background: linear-gradient(to bottom, transparent 55%, rgba(0, 52, 120, 0.22));
+    border-radius: 10px 10px 0 0;
+    opacity: 0;
+    transition: opacity 0.32s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+ul.modelcars li:hover::before {
+    opacity: 1;
+}
+
+/* ── IMAGEM DO CARRO ── */
+
+img.photocar {
+    display: block;
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    /* Zoom suave no hover — o overflow: hidden no li faz o clipping */
+    transition: transform 0.40s ease, filter 0.40s ease;
+    filter: brightness(0.95);
+}
+
+ul.modelcars li:hover img.photocar {
+    transform: scale(1.07);
+    filter: brightness(1.04);
+}
+
+/* ── INFO DO CARD ── */
+
+.infocar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-top: 1px solid #edf0f8;
+}
+
+.infocar div {
+    display: inline-flex;
+    align-items: center;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--ford-blue, #003478);
+    border-radius: 4px;
+    cursor: pointer;
+    accent-color: var(--ford-blue, #003478);
+    flex-shrink: 0;
+    transition: transform 0.18s ease;
+}
+
+.checkbox:hover {
+    transform: scale(1.12);
+}
+
+.info {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+}
+
+.textmodel {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ford-blue, #003478);
+    line-height: 1.4;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.textprice {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ford-light-blue, #1351d8);
+    background: rgba(19, 81, 216, 0.08);
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.2px;
+}
+
+/* ── TABELA DE COMPARAÇÃO ── */
+
+table {
+    border-collapse: collapse;
+    width: 88%;
+    margin: 10px auto 14px;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 13px;
+}
+
+td:nth-child(1) {
+    font-weight: 700;
+    width: 40%;
+    color: var(--ford-blue, #003478);
+}
+
+tr {
+    border-bottom: 1px solid #e8ecf6;
+    transition: background 0.15s;
+}
+
+tr:nth-child(even) {
+    background-color: #f4f7fb;
+}
+
+tr:hover {
+    background-color: #eaf0fb;
+}
+
+/* ── MODAL DE COMPARAÇÃO ── */
+
+div#compare {
+    position: fixed;
+    display: none;
+    width: 55vw;
+    max-width: 820px;
+    min-width: 320px;
+    max-height: 82vh;
+    background: #ffffff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    padding: 20px 16px;
+    box-shadow: var(--shadow-lg, 0 14px 48px rgba(0, 52, 120, 0.22));
+    overflow-y: auto;
+    z-index: 200;
+    /* Barra de scroll personalizada (Webkit) */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 52, 120, 0.3) transparent;
+}
+
+div#compare::-webkit-scrollbar { width: 5px; }
+div#compare::-webkit-scrollbar-track { background: transparent; }
+div#compare::-webkit-scrollbar-thumb {
+    background: rgba(0, 52, 120, 0.28);
+    border-radius: 10px;
+}
+
+/* ── RESPONSIVO ── */
+
+@media (max-width: 768px) {
+    ul.modelcars {
+        gap: 16px;
+        padding: 24px 16px;
+    }
+
+    ul.modelcars li {
+        width: calc(100vw - 32px);
+        max-width: 360px;
+    }
+
+    .textmodel {
+        white-space: normal;
+    }
+
+    div#compare {
+        width: 94vw;
+        min-width: unset;
+    }
+}
