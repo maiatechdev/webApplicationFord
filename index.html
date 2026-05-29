@@ -4,47 +4,89 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ford</title>    
+    <title>Ford | Nova Ranger 2022</title>
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <script src="js/carousel.js"></script>
 </head>
 <body>
-    <header>       
+
+    <header>
         <div>
-            <img src="img/logo-ford-256.png" width="150" class="logo" />
+            <img src="img/logo-ford-256.png" width="130" class="logo">
         </div>
         <nav>
             <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="lancamento.html">Lançamento</a>
-                </li>
-                <li>
-                    <a href="contato.html">Contato</a>
-                </li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="lancamento.html">Lançamento</a></li>
+                <li><a href="contato.html">Contato</a></li>
             </ul>
         </nav>
-
     </header>
+
     <main>
         <div class="carousel-wrapper">
             <button type="button" class="carousel-btn carousel-btn-prev" onclick="Carousel.Prev()">&#10094;</button>
             <div id="carousel"></div>
+
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <p class="hero-eyebrow">Nova Ranger 2022</p>
+                    <h1 class="hero-title">Força que<br><span>redefine</span><br>limites.</h1>
+                    <p class="hero-subtitle">Tecnologia que leva você mais longe. Robustez para qualquer terreno.</p>
+                    <div class="hero-actions">
+                        <a href="lancamento.html" class="btn-hero-primary">Explorar Ranger</a>
+                        <a href="lancamento.html" class="btn-hero-secondary">Ver lançamentos →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="carousel-title"></div>
+
             <button type="button" class="carousel-btn carousel-btn-next" onclick="Carousel.GoNext()">&#10095;</button>
         </div>
-        <div id="carousel-title">
-        </div>
-        <script>
 
-            carouselArr.push(new Carousel("imagem_1.jpg","Esta é a nova Ranger Ford 2022. Verifique novidades.","lancamento.html"));
-            carouselArr.push(new Carousel("imagem_2.jpg","Ford a nossa história","#"));
-            carouselArr.push(new Carousel("imagem_3.jpg","Nova Ford Bronco Sport 2022","lancamento.html"));
+
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">
+                    <span class="stat-value" data-count="160">0</span>
+                    <span class="stat-unit">cv</span>
+                </div>
+                <span class="stat-label">Potência</span>
+            </div>
+            <div class="stat">
+                <div class="stat-number">
+                    <span class="stat-value" data-count="385">0</span>
+                    <span class="stat-unit">Nm</span>
+                </div>
+                <span class="stat-label">Torque</span>
+            </div>
+            <div class="stat">
+                <div class="stat-number">
+                    <span class="stat-value" data-count="1250">0</span>
+                    <span class="stat-unit">kg</span>
+                </div>
+                <span class="stat-label">Cap. de Carga</span>
+            </div>
+            <div class="stat">
+                <div class="stat-number">
+                    <span class="stat-value" data-count="4">0</span>
+                    <span class="stat-unit">x4</span>
+                </div>
+                <span class="stat-label">Tração</span>
+            </div>
+        </div>
+
+        <script>
+            carouselArr.push(new Carousel("imagem_1.jpg", "Esta é a nova Ranger Ford 2022. Verifique novidades.", "lancamento.html"));
+            carouselArr.push(new Carousel("imagem_2.jpg", "Ford — a nossa história", "#"));
+            carouselArr.push(new Carousel("imagem_3.jpg", "Nova Ford Bronco Sport 2022", "lancamento.html"));
             Carousel.Start(carouselArr);
         </script>
     </main>
+
     <footer>
         <nav id="social">
             <ul>
@@ -55,8 +97,11 @@
             </ul>
         </nav>
         <div>
-            <img src="img/ford-96.png" width="70"  />
+            <img src="img/ford-96.png" width="60">
         </div>
-    </footer>    
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/premium.js"></script>
 </body>
 </html>

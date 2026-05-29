@@ -1,149 +1,155 @@
-/* ── INPUTS ── */
 
-.fordform {
-    display: block;
-    width: 320px;
-    border: 1.5px solid #cdd4e8;
-    border-radius: 6px;
-    height: 44px;
-    margin: 9px 0;
-    font-size: 13px;
-    font-family: 'Roboto', sans-serif;
-    padding: 0 14px;
-    color: var(--ford-dark, #1a1a2e);
-    background: #f8fafd;
-    transition: border-color 0.22s, box-shadow 0.22s, background 0.22s;
+.contact-page {
+    position: relative;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 64px 80px 64px 0;
+    overflow: hidden;
+    background: var(--bg-body, #f4f7fb);
 }
 
-.fordform:focus {
-    outline: none;
-    border-color: var(--ford-light-blue, #1351d8);
-    box-shadow: 0 0 0 3px rgba(19, 81, 216, 0.13);
-    background: #ffffff;
+.contact-car-img {
+    position: absolute;
+    left: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 55%;
+    max-width: 620px;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 24px 48px rgba(0, 52, 120, 0.18));
+    animation: carFloat 0.9s 0.2s var(--ease, cubic-bezier(0.25,0.46,0.45,0.94)) both;
+    transition: filter 0.6s ease;
 }
 
-.fordform::placeholder {
-    color: #9ba8c2;
-    font-size: 11px;
-    letter-spacing: 0.6px;
+@keyframes carFloat {
+    from { opacity: 0; transform: translateY(calc(-50% + 30px)); }
+    to   { opacity: 1; transform: translateY(-50%);               }
 }
 
-/* Validação visual — só aparece após o usuário digitar */
-input.fordform:not(:placeholder-shown):valid {
-    border-color: #27ae60;
-    background: #f3fdf6;
-    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.10);
+.contact-page:hover .contact-car-img {
+    filter: drop-shadow(0 32px 64px rgba(0, 52, 120, 0.26));
 }
-
-input.fordform:not(:placeholder-shown):invalid {
-    border-color: #e74c3c;
-    background: #fdf4f4;
-    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.10);
-}
-
-select.fordform {
-    width: 320px;
-    height: 44px;
-    color: var(--ford-dark, #1a1a2e);
-    cursor: pointer;
-    appearance: auto;
-}
-
-/* ── LAYOUT DO FORMULÁRIO ── */
 
 .forms {
+    position: relative;
+    z-index: 1;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 48px;
+    flex-direction: column;
     background: #ffffff;
-    margin: 32px auto;
-    max-width: 880px;
-    border-radius: 12px;
-    padding: 48px 40px;
-    box-shadow: 0 4px 24px rgba(0, 52, 120, 0.09);
-    /* Transição suave na sombra quando o usuário interage */
+    border-radius: 16px;
+    border: 1px solid var(--border, #dde4f0);
+    box-shadow: 0 8px 48px rgba(0, 52, 120, 0.12);
+    padding: 48px 44px;
+    width: 100%;
+    max-width: 440px;
     transition: box-shadow 0.3s ease;
 }
 
-/* Sombra mais profunda quando o usuário está preenchendo o formulário */
 .forms:focus-within {
-    box-shadow: 0 8px 40px rgba(0, 52, 120, 0.16);
-}
-
-.forms > div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0;
-    vertical-align: unset;
-}
-
-.forms > div img {
-    border-radius: 8px;
-    max-width: 340px;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.forms > div img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 28px rgba(0, 52, 120, 0.18);
+    box-shadow: 0 12px 56px rgba(0, 52, 120, 0.18);
 }
 
 h2.titulo {
-    font-weight: 900;
-    font-size: 22px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     color: var(--ford-blue, #003478);
-    letter-spacing: 0.4px;
-    margin-bottom: 20px;
-    transition: color 0.2s;
-}
-
-/* Título muda levemente quando o formulário está em foco */
-.forms:focus-within h2.titulo {
-    color: var(--ford-light-blue, #1351d8);
+    margin-bottom: 24px;
+    line-height: 1.1;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+}
+
+.fordform {
+    display: block;
+    width: 100%;
+    height: 46px;
+    margin-bottom: 12px;
+    padding: 0 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text-1, #0d1b2e);
+    background: var(--bg-body, #f4f7fb);
+    border: 1.5px solid var(--border, #dde4f0);
+    border-radius: 6px;
+    transition: border-color 0.22s, box-shadow 0.22s, background 0.22s;
+}
+
+.fordform:focus {
+    outline: none;
+    border-color: var(--ford-accent, #1351d8);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(19, 81, 216, 0.12);
+}
+
+.fordform::placeholder {
+    color: var(--text-3, #7a90b0);
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+input.fordform:not(:placeholder-shown):valid {
+    border-color: #27ae60;
+    background: #f4fdf7;
+}
+
+input.fordform:not(:placeholder-shown):invalid {
+    border-color: #e74c3c;
+    background: #fdf5f5;
+}
+
+select.fordform {
+    height: 46px;
+    color: var(--text-2, #3d5475);
+    cursor: pointer;
+    appearance: auto;
 }
 
 button[type="submit"] {
-    width: 320px;
-    height: 44px;
-    margin-top: 12px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    width: 100%;
+    height: 46px;
+    margin-top: 6px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
     float: none;
+    border-radius: 6px;
 }
 
-/* ── RESPONSIVO ── */
+@media (max-width: 900px) {
+    .contact-page {
+        justify-content: center;
+        padding: 48px 24px;
+    }
 
-@media (max-width: 768px) {
-    .forms {
+    .contact-car-img {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: 90%;
+        max-width: 420px;
+        margin-bottom: -20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-page {
         flex-direction: column;
         align-items: center;
-        padding: 32px 20px;
-        margin: 16px;
-        gap: 28px;
     }
 
-    .fordform,
-    select.fordform {
-        width: 80vw;
-        max-width: 340px;
-    }
-
-    button[type="submit"] {
-        width: 80vw;
-        max-width: 340px;
+    .forms {
+        max-width: 480px;
+        padding: 36px 28px;
     }
 }
