@@ -46,7 +46,29 @@
                         <option>Reclamação</option>
                     </select>
                     <input type="text" name="mensagem" placeholder="Mensagem*" class="fordform" required>
-                    <button type="submit">Enviar mensagem</button>
+
+                    <!-- Consentimento LGPD -->
+                    <p class="consent-text">
+                        Os dados serão mantidos em nossa base de dados, só enquanto for desejado por você.
+                        A qualquer momento, será possível editar ou remover tais dados.
+                    </p>
+
+                    <div class="consent-checks">
+                        <label class="consent-label">
+                            <input type="checkbox" id="terms-check"
+                                onchange="document.getElementById('submit-btn').disabled = !this.checked">
+                            Sim. Li e concordo com os
+                            <a href="https://www.ford.com.br/politica-de-privacidade/"
+                               target="_blank" rel="noopener noreferrer">Termos e Condições</a>.
+                        </label>
+
+                        <label class="consent-label">
+                            <input type="checkbox" name="newsletter">
+                            Sim. Também quero receber descontos e novidades.
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submit-btn" disabled>Enviar mensagem</button>
                 </form>
             </div>
 
